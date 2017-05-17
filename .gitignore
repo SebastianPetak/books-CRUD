@@ -1,0 +1,22 @@
+# Logs
+logs
+*.log
+
+# Runtime data
+pids
+*.pid
+*.seed
+
+# Grunt intermediate storage
+.grunt
+
+#node-waf configuration
+.lock-wscript
+
+# Compiled binary addons
+build/Release
+
+*.db
+.env
+
+node_modules

@@ -1,0 +1,20 @@
+{
+  "name": "books-CRUD",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Sebastian Petak",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.17.1",
+    "express": "^4.15.3",
+    "mongoose": "^4.9.9"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SebastianPetak/books-CRUD.git"
+  }
+}
