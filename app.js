@@ -30,7 +30,7 @@ app.get('/books', function(req, res) {
 				console.log(books);
 				res.json(books);
 			}
-		})
+		});
 });
 
 app.get('/books/:id', function(req,res) {
@@ -45,7 +45,7 @@ app.get('/books/:id', function(req,res) {
 			console.log(book);
 			res.json(book);
 		}
-	})
+	});
 });
 // first and main way of creating. Less Errors this way
 // ensures data adhears to model?
@@ -63,7 +63,7 @@ app.post('/book', function(req, res) {
 			console.log(book);
 			res.send(book);
 		}
-	})
+	});
 });
 // second way of creating
 app.post('/book2', function(req,res) {
@@ -74,8 +74,8 @@ app.post('/book2', function(req,res) {
 			console.log(book);
 			res.send(book);
 		}
-	})
-})
+	});
+});
 // Update a book (one way to update)
 app.put('/book/:id', function(req, res) {
 	Book.findOneAndUpdate(
@@ -91,7 +91,20 @@ app.put('/book/:id', function(req, res) {
 			console.log(newBook);
 			res.status(201).send(newBook);
 		}
-	})
-})
+	});
+});
+
+app.delete('/book/:id', function(req, res) {
+	Book.findOneAndRemove({
+		_id: req.params.id
+	}, function(err, book) {
+		if(err) {
+			res.send('error deleting');
+		} else {
+			console.log(book);
+			res.status(204);
+		}
+	});
+});
 
 app.listen(port);
