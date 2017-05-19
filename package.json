@@ -9,6 +9,7 @@
   "author": "Sebastian Petak",
   "license": "ISC",
   "dependencies": {
+    "bluebird": "^3.5.0",
     "body-parser": "^1.17.1",
     "express": "^4.15.3",
     "mongoose": "^4.9.9"
