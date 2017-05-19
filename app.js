@@ -47,7 +47,8 @@ app.get('/books/:id', function(req,res) {
 		}
 	})
 });
-// first and main way of creating
+// first and main way of creating. Less Errors this way
+// ensures data adhears to model?
 app.post('/book', function(req, res) {
 	var newBook = new Book();
 
@@ -57,7 +58,7 @@ app.post('/book', function(req, res) {
 
 	newBook.save(function(err, book) {
 		if(err) {
-			res.send('error saving boko');
+			res.send('error saving book');
 		} else {
 			console.log(book);
 			res.send(book);
@@ -72,6 +73,23 @@ app.post('/book2', function(req,res) {
 		} else {
 			console.log(book);
 			res.send(book);
+		}
+	})
+})
+// Update a book (one way to update)
+app.put('/book/:id', function(req, res) {
+	Book.findOneAndUpdate(
+	{_id: req.params.id},
+	{$set: {title: req.body.title,
+		 			author: req.body.author,
+					category: req.body.category}},
+	{upsert: true, new: true},
+	function(err, newBook) {
+		if (err) {
+			console.log('error occured');
+		} else {
+			console.log(newBook);
+			res.status(201).send(newBook);
 		}
 	})
 })
